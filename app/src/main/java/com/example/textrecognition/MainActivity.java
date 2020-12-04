@@ -37,7 +37,8 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 public class MainActivity extends AppCompatActivity {
 
     EditText mResultEt;
-    ImageView mPreviewIv;
+    ImageView mPreviewIv1, mPreviewIv2, mPreviewIv3;
+    int position = 0;
 
     private static final int CAMERA_REQUEST_CODE=200;
     private static final int STORAGE_REQUEST_CODE=400;
@@ -53,37 +54,40 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button b;
-        b = findViewById(R.id.button1);
-        b.setOnClickListener(new View.OnClickListener() {
+        Button b1, b2, b3;
+        b1 = findViewById(R.id.button1);
+        b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showImageImportDialog();
+                position = 0;
             }
         });
-        b = findViewById(R.id.button2);
-        b.setOnClickListener(new View.OnClickListener() {
+        b2 = findViewById(R.id.button2);
+        b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showImageImportDialog();
+                position = 1;
             }
         });
-        b = findViewById(R.id.button3);
-        b.setOnClickListener(new View.OnClickListener() {
+        b3 = findViewById(R.id.button3);
+        b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showImageImportDialog();
+                position = 2;
             }
         });
         ActionBar actionBar=getSupportActionBar();
         assert actionBar != null;
         actionBar.setSubtitle("Click + Button To Insert Images");
         mResultEt=findViewById(R.id.resultEt);
-        mPreviewIv=findViewById(R.id.imageIv);
+        mPreviewIv1=findViewById(R.id.imageIv);
         mResultEt=findViewById(R.id.resultEt2);
         mResultEt=findViewById(R.id.resultEt3);
-        mPreviewIv=findViewById(R.id.imageIv2);
-        mPreviewIv=findViewById(R.id.imageIv3);
+        mPreviewIv2=findViewById(R.id.imageIv2);
+        mPreviewIv3=findViewById(R.id.imageIv3);
         //camera permission
         cameraPermission=new String[]{Manifest.permission.CAMERA ,Manifest.permission.WRITE_EXTERNAL_STORAGE};
         //storage permission
@@ -248,13 +252,26 @@ public class MainActivity extends AppCompatActivity {
         //get cropped images
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == 0) {
+            if (resultCode == RESULT_OK) {
                 assert result != null;
                 Uri resultUri = result.getUri();//gete image uri
                 //set image to image view
-                mPreviewIv.setImageURI(resultUri);
+                BitmapDrawable bitmapDrawable;
+                switch (position) {
+                    case 0:
+                        mPreviewIv1.setImageURI(resultUri);
+                        bitmapDrawable = (BitmapDrawable) mPreviewIv1.getDrawable();
+                    case 1:
+                        mPreviewIv2.setImageURI(resultUri);
+                        bitmapDrawable = (BitmapDrawable) mPreviewIv2.getDrawable();
+                    case 2:
+                        mPreviewIv3.setImageURI(resultUri);
+                        bitmapDrawable = (BitmapDrawable) mPreviewIv3.getDrawable();
+                        break;
+                    default:
+                        throw new IllegalStateException("Unexpected value: " + position);
+                }
                 //get drawble bitmap for text recognition
-                BitmapDrawable bitmapDrawable = (BitmapDrawable) mPreviewIv.getDrawable();
                 Bitmap bitmap = bitmapDrawable.getBitmap();
                 TextRecognizer recognizer = new TextRecognizer.Builder(getApplicationContext()).build();
                 if (!recognizer.isOperational()) {
