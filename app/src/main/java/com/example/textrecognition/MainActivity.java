@@ -21,8 +21,11 @@ import android.provider.MediaStore;
 import android.util.SparseArray;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.vision.Frame;
@@ -50,13 +53,37 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Button b;
+        b = findViewById(R.id.button1);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showImageImportDialog();
+            }
+        });
+        b = findViewById(R.id.button2);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showImageImportDialog();
+            }
+        });
+        b = findViewById(R.id.button3);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showImageImportDialog();
+            }
+        });
         ActionBar actionBar=getSupportActionBar();
         assert actionBar != null;
         actionBar.setSubtitle("Click + Button To Insert Images");
         mResultEt=findViewById(R.id.resultEt);
         mPreviewIv=findViewById(R.id.imageIv);
-
+        mResultEt=findViewById(R.id.resultEt2);
+        mResultEt=findViewById(R.id.resultEt3);
+        mPreviewIv=findViewById(R.id.imageIv2);
+        mPreviewIv=findViewById(R.id.imageIv3);
         //camera permission
         cameraPermission=new String[]{Manifest.permission.CAMERA ,Manifest.permission.WRITE_EXTERNAL_STORAGE};
         //storage permission
@@ -76,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id=item.getItemId();
-        if(id==R.id.addImage) {
+        if(id==R.id.button1) {
            showImageImportDialog();
         }
         if(id==R.id.settings){
@@ -201,8 +228,10 @@ public class MainActivity extends AppCompatActivity {
     //Handle image result
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
         super.onActivityResult(requestCode, resultCode, data);
+
         if (resultCode == RESULT_OK) {
             if (requestCode == IMAGE_PICK_GALLERY_CODE) {
                 //got image from gallery now crop it
@@ -219,7 +248,7 @@ public class MainActivity extends AppCompatActivity {
         //get cropped images
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
+            if (resultCode == 0) {
                 assert result != null;
                 Uri resultUri = result.getUri();//gete image uri
                 //set image to image view
@@ -243,6 +272,7 @@ public class MainActivity extends AppCompatActivity {
                     //set text to edit text
                     mResultEt.setText(sb.toString());
                 }
+
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 //if there is any error show it
                 assert result != null;
@@ -252,4 +282,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
 }

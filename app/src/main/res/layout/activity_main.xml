@@ -23,11 +23,19 @@
                 app:cardCornerRadius="5dp"
                 app:cardElevation="5dp"
                 >
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="5dp">
+
+                    <Button
+                        android:id="@+id/button1"
+                        android:layout_width="398dp"
+                        android:layout_height="wrap_content"
+                        android:text="Meter read" />
+
                     <TextView
                         android:text="Result"
                         android:textSize="20sp"
@@ -53,24 +61,159 @@
                 app:cardCornerRadius="5dp"
                 app:cardElevation="5dp"
                 >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Image Preview"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/imageIv"
+                        android:layout_width="398dp"
+                        android:layout_height="82dp"
+                        android:maxHeight="250dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Time Image" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#fff"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                >
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="5dp">
                     <TextView
-                        android:text="Image Preview"
+                        android:text="Result"
                         android:textSize="20sp"
                         android:textColor="@color/colorPrimary"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
-                    <ImageView
-                        android:id="@+id/imageIv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:maxHeight="250dp"/>
+                    <EditText
+                        android:id="@+id/resultEt2"
+                        android:hint=""
+                        android:autoLink="all"
+                        android:padding="5dp"
+                        android:textColor="#000"
+                        android:background="@null"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#fff"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Image Preview"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/imageIv2"
+                        android:layout_width="398dp"
+                        android:layout_height="76dp"
+                        android:maxHeight="250dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Time Image 2" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#fff"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+                    <TextView
+                        android:text="Result"
+                        android:textSize="20sp"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <EditText
+                        android:id="@+id/resultEt3"
+                        android:hint=""
+                        android:autoLink="all"
+                        android:padding="5dp"
+                        android:textColor="#000"
+                        android:background="@null"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#fff"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Image Preview"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20sp" />
+
+                    <ImageView
+                        android:id="@+id/imageIv3"
+                        android:layout_width="398dp"
+                        android:layout_height="76dp"
+                        android:maxHeight="250dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
         </LinearLayout>
 
     </ScrollView>
